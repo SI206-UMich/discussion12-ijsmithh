@@ -31,6 +31,17 @@ def add_employee(filename, cur, conn):
 
 # TASK 2: GET JOB AND HIRE_DATE INFORMATION
 def job_and_hire_date(cur, conn):
+    cur.execute("""
+    SELECT COUNT(*), title
+    FROM EMPLOYEES
+    JOIN People
+    ON Movies.id = People.fave_hire_id
+    GROUP BY Hires.title
+    """
+    )
+    data = cur.fetchall()
+    # print(data)
+    return data
     pass
 
 # TASK 3: IDENTIFY PROBLEMATIC SALARY DATA
